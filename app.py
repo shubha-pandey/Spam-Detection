@@ -66,16 +66,20 @@ st.markdown("""
 
 
 with st.sidebar:
-    st.header("About This App/Additional Features")
+    st.header("About")
     st.image(image, use_container_width=False, width=200)                # image
     st.markdown("""
-    - **Detect Spam:** Analyze SMS or emails to identify spam messages.
-    - **Interactive Feedback:** Provides clarity and transparency for predictions.
-    - **Generate Word Cloud:** Visualize the words in your message.
+    **Welcome to the Spam Detection App!**
+    This app classifies sms or email messages as **Spam** or **Ham (Not Spam)**.
+                      
+    **How It Works?**
+    - Input your message in the provided text area.
+    - Click on Check button to classify it.
+    - Voila now you know whether it is genuine or not!
+                
+    Want to see some fun visualizations of your message ? Click on this button🔻
     """)
     generate_wordcloud_button = st.button("Generate Word Cloud")         # button
-    st.header("Contact Us")
-    st.write("For any issues or suggestions, contact: txtsupport@gmail.com")
     
 
 input_sms = st.text_area("📩 Paste your message below to see if it's spam or not:", height=200)                   # where to paste text 
