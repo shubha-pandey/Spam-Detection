@@ -1,6 +1,5 @@
 # for streamlit application
 
-
 import nltk
 
 # run these only once and after the packages are installed no need to re-run them everytime
@@ -26,9 +25,7 @@ ps = PorterStemmer()
 # Function to preprocess text
 def transform_text(text):                                # same function as in the data preprocessing
     text = text.lower()
-
     useful_words = []
-
     words = nltk.word_tokenize(text)
 
     for word in words :
@@ -50,7 +47,7 @@ tk = pickle.load(open('vectorizer.pkl', 'rb'))
 
 
 # image file
-image = Image.open("spam_detector_logo.png")
+image = Image.open("spam_detector_logo.png")     # for adding images
 
 
 # Streamlit page configuration
@@ -58,7 +55,7 @@ st.set_page_config(page_title="Spam Detection App", page_icon="📧", layout="ce
 
 
 # App header
-st.title("📧 Spam Detection System")                                   # title
+st.title("📧 Spam Detection System")     # title
 
 st.markdown("""
 #### Your reliable tool for identifying spam messages! 🤖
@@ -67,7 +64,7 @@ st.markdown("""
 
 with st.sidebar:
     st.header("About")
-    st.image(image, use_container_width=False, width=200)                # image
+    st.image(image, use_container_width=False, width=200)     # image
     st.markdown("""
     **Welcome to the Spam Detection App!**
     This app classifies sms or email messages as **Spam** or **Ham (Not Spam)**.
@@ -79,10 +76,10 @@ with st.sidebar:
                 
     Want to see some fun visualizations of your message ? Click on this button🔻
     """)
-    generate_wordcloud_button = st.button("Generate Word Cloud")         # button
+    generate_wordcloud_button = st.button("Generate Word Cloud")     # button
     
 
-input_sms = st.text_area("📩 Paste your message below to see if it's spam or not:", height=200)                   # where to paste text 
+input_sms = st.text_area("📩 Paste your message below to see if it's spam or not:", height=200)     # where to paste text 
 
 
 # Generate word cloud if button is clicked
@@ -105,7 +102,7 @@ if st.button("Check⚙️") :
             
             # Preprocess and classify
             transformed_sms = transform_text(input_sms)
-            vectorized_data = tk.transform([transformed_sms])      # convert data into vectors
+            vectorized_data = tk.transform([transformed_sms])     # convert data into vectors
             result = model.predict(vectorized_data)
         
             # Display results 
